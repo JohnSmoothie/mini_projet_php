@@ -1,9 +1,9 @@
 <?php
 
-$toto=crypt('toto');
+$toto = crypt('toto');
 //echo $toto."<br/>";
 
-$titi=crypt('titi');
+$titi = crypt('titi');
 //echo $titi."<br/>";
 
 // il faut que la fonction crypt() connaisse la méthode de cryptage et le "sel" à utiliser.
@@ -12,7 +12,7 @@ $titi=crypt('titi');
 //C'est pour cette raison que l'on passe $toto comme 2ème paramètre.
 // voir documentation php
 
-if (crypt('toto', $toto)== $toto) {
+if (crypt('toto', $toto) == $toto) {
     echo 'Le mot de passe est valide !';
 } else {
     echo 'Le mot de passe est invalide.';
