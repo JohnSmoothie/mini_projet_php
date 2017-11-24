@@ -22,10 +22,10 @@ class ControleurAuthentification
 
         if (crypt('toto', $toto_crypte) == $pwd) {
             echo "Vous êtes identifié !";
-            header('Location: ../Vue/test.html');
+            ?><meta http-equiv="Location" content="../Vue/test.html"><?php
         } else {
             echo "Mot de passe incorrect !";
-            header('Location: ../index.php');
+            ?><meta http-equiv="Location" content="../index.php"><?php
         }
     }
 
