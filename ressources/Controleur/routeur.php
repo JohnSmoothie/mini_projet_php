@@ -2,14 +2,9 @@
 
 require_once 'controleurAuthentification.php';
 
-//require_once "modele/.php";
-
 class Routeur
 {
-
     private $ctrlAuthentification;
-    private $modele;
-
 
     public function __construct()
     {
@@ -24,8 +19,6 @@ class Routeur
         } else {
             $this->ctrlAuthentification->accueil();
         }
-
-
     }
 }
 

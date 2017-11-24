@@ -1,11 +1,9 @@
 <?php
-require_once PATH_VUE . "/authentification.php";
-require_once PATH_MODELE . "/crypt.php";
 
+require_once PATH_VUE . "/authentification.php";
 
 class ControleurAuthentification
 {
-
     private $vue;
 
     function __construct()
@@ -19,7 +17,16 @@ class ControleurAuthentification
     }
 
     function authentification($login, $pwd) {
-        if()
+        $toto_crypte = crypt('toto');
+        $titi_crypte = crypt('titi');
+
+        if (crypt('toto', $toto_crypte) == $pwd) {
+            echo "Vous êtes identifié !";
+            header('Location: ../Vue/test.html');
+        } else {
+            echo "Mot de passe incorrect !";
+            header('Location: ../index.php');
+        }
     }
 
 
