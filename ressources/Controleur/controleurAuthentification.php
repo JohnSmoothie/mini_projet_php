@@ -1,40 +1,40 @@
 <?php
-require_once PATH_VUE."/authentification.php";
-require_once PATH_MODELE."/crypt.php";
 
+require_once PATH_VUE . "/authentification.php";
 
-class ControleurAuthentification{
+class ControleurAuthentification
+{
+    private $vue;
 
-private $vue;
-//private $modele;
+    function __construct()
+    {
+        $this->vue = new Authentification();
+    }
 
+    function accueil()
+    {
+        $this->vue->afficherPage();
+    }
 
-function __construct(){
-$this->vue=new Authentification();
-//$this->modele=new Modele();
+    function authentification($login, $pwd) {
 
-}
-
-function accueil(){
-  $this->vue->afficherPage();
-}
+    }
 
 
 //function message($pseudo){
-  //if($this->modele->exists($pseudo)){
+    //if($this->modele->exists($pseudo)){
     //$tabResult=$this->modele->get10RecentMessage();
     //$this->vue->afficherMassages($tabResult);
 //  } else {
-  //  $this->ctrlAuthentification->accueil();
-  //}
+    //  $this->ctrlAuthentification->accueil();
+    //}
 //}
 
 //function nouvMessage($message){
-  //$this->modele->majSalon($_COOKIE['cookiePseudo'], $message);
-  //$tabResult=$this->modele->get10RecentMessage();
-  //$this->vue->afficherMassages($tabResult);
+    //$this->modele->majSalon($_COOKIE['cookiePseudo'], $message);
+    //$tabResult=$this->modele->get10RecentMessage();
+    //$this->vue->afficherMassages($tabResult);
 //}
-
 
 
 }
