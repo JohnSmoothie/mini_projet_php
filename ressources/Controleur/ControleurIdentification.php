@@ -18,7 +18,7 @@ function accueil(){
   $this->vue->afficherPage();
 }
 
-function authentification($pseudo) {
+function authentification() {
 
 }
 
