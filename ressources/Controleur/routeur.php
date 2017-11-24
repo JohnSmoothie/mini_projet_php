@@ -1,7 +1,7 @@
 <?php
 
 require_once 'controleurAuthentification.php';
-require_once "modele/modele.php";
+//require_once "modele/.php";
 
 class Routeur {
 
@@ -12,7 +12,7 @@ class Routeur {
 
   public function __construct(){
     $this->ctrlAuthentification= new ControleurAuthentification();
-    $this->modele = new Modele();
+    //$this->modele = new Modele();
 
   }
 

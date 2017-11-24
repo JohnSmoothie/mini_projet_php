@@ -1,9 +1,9 @@
 <?php
 require_once PATH_VUE."/authentification.php";
-require_once PATH_CONTROLEUR."/crypt.php";
+require_once PATH_MODELE."/crypt.php";
 
 
-class ControleurIdentification{
+class ControleurAuthentification{
 
 private $vue;
 //private $modele;
@@ -33,8 +33,10 @@ function accueil(){
   //$this->modele->majSalon($_COOKIE['cookiePseudo'], $message);
   //$tabResult=$this->modele->get10RecentMessage();
   //$this->vue->afficherMassages($tabResult);
-}
+//}
 
 
 
 }
+
+?>
