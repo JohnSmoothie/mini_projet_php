@@ -17,16 +17,7 @@ class ControleurAuthentification
     }
 
     function authentification($login, $pwd) {
-        $toto = crypt('toto');
-       // $titi = crypt('titi');
 
-        if (crypt($pwd, $toto) == $pwd) {
-            echo "Vous êtes identifié !";
-            ?><meta http-equiv="Location" content="../Vue/test.html"><?php
-        } else {
-            echo "Mot de passe incorrect !";
-            ?><meta http-equiv="Location" content="../index.php"><?php
-        }
     }
 
 
