@@ -18,5 +18,4 @@ if (crypt('toto', $toto)== $toto) {
 } else {
     echo 'Le mot de passe est invalide.';
 }
-
 ?>
