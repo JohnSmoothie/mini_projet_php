@@ -1,5 +1,6 @@
 <?php
 require_once PATH_VUE."/authentification.php";
+require_once PATH_CONTROLEUR."/crypt.php";
 
 
 class ControleurIdentification{
@@ -18,8 +19,8 @@ function accueil(){
   $this->vue->afficherPage();
 }
 
-function authentification($pseudo) {
-
+function authentification($login, $password) {
+  if(
 }
 
 //function message($pseudo){
