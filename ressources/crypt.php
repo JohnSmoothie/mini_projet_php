@@ -6,6 +6,7 @@ echo $toto."<br/>";
 $titi=crypt('titi');
 echo $titi."<br/>";
 
+//zzzzzzz
 // il faut que la fonction crypt() connaisse la méthode de cryptage et le "sel" à utiliser.
 //Il faut que ce soit les mêmes que ce qui a été utilisé lors du cryptage.
 // ces 2 informations sont stockées au début de la chaîne de caractères résultant du cryptage
