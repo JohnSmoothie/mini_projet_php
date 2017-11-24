@@ -17,10 +17,10 @@ class ControleurAuthentification
     }
 
     function authentification($login, $pwd) {
-        $toto_crypte = crypt('toto');
-        $titi_crypte = crypt('titi');
+        $toto_salt = '$6$VsDCW/kqInRv$/bkDT4rmkNLGo704srZE1riI4u7IUUcSuuEqrdkeBJ.3RcsnEO.ihAnWvIWJ0fSoP3hVa/OpWTbhi50xQhzEk1';
+       // $titi_crypte = crypt('titi');
 
-        if (crypt('toto', $toto_crypte) == $pwd) {
+        if (crypt($login, $toto_salt) == $pwd) {
             echo "Vous êtes identifié !";
             ?><meta http-equiv="Location" content="../Vue/test.html"><?php
         } else {
