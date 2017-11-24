@@ -11,7 +11,6 @@ $titi = crypt('titi');
 
 if (crypt('toto', $toto) == $toto) {
     echo "Vous êtes identifié !";
-    header('Location: ../Vue/test.html');
 } else {
     echo "Mot de passe incorrect !";
 }

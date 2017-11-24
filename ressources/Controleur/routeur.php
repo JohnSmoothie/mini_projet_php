@@ -1,6 +1,6 @@
 <?php
 
-require_once 'controleurAuthentification.php';
+require 'controleurAuthentification.php';
 
 class Routeur
 {

@@ -1,6 +1,7 @@
 <?php
 
-require_once PATH_VUE . "/authentification.php";
+require PATH_VUE . "/authentification.php";
+require PATH_VUE . "/test.php";
 
 class ControleurAuthentification
 {
@@ -17,7 +18,13 @@ class ControleurAuthentification
     }
 
     function authentification($login, $pwd) {
-
+        if($login == 'toto' && $pwd == 'toto') {
+            $this->vue = new Test();
+            $this->vue->afficherPage();
+        }
+        else {
+            $this->vue->afficherPage();
+        }
     }
 
 
