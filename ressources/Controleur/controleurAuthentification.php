@@ -18,6 +18,10 @@ class ControleurAuthentification
         $this->vue->afficherPage();
     }
 
+    function authentification($login, $pwd) {
+        if()
+    }
+
 
 //function message($pseudo){
     //if($this->modele->exists($pseudo)){

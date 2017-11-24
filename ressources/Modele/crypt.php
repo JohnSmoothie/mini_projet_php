@@ -1,10 +1,7 @@
 <?php
 
 $toto = crypt('toto');
-//echo $toto."<br/>";
-
 $titi = crypt('titi');
-//echo $titi."<br/>";
 
 // il faut que la fonction crypt() connaisse la méthode de cryptage et le "sel" à utiliser.
 //Il faut que ce soit les mêmes que ce qui a été utilisé lors du cryptage.
@@ -13,8 +10,9 @@ $titi = crypt('titi');
 // voir documentation php
 
 if (crypt('toto', $toto) == $toto) {
-    echo 'Le mot de passe est valide !';
+    echo "Vous êtes identifié !";
+    header('Location: ../Vue/test.html');
 } else {
-    echo 'Le mot de passe est invalide.';
+    echo "Mot de passe incorrect !";
 }
 ?>
