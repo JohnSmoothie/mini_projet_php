@@ -19,7 +19,8 @@
 
       public function verifieConnexion($pseudo, $password) {
         if($this->modele->exists($pseudo)) {
-          echo 'OK';
+          $input = $password;
+          require_once PATH_MODELE . '/Modele_crypt.php';
         }
         else {
           $this->vue_authentification->afficherVue();
