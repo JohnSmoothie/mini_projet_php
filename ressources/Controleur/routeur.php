@@ -1,5 +1,6 @@
 <?php
 
+
   require_once 'Controleur_authentification.php';
   require_once 'Controleur_partie.php';
 
@@ -14,7 +15,7 @@
     }
 
     public function routerRequete() {
-      if (isset($_COOKIE['login']) && isset($_COOKIE['password'])) {
+      if (isset($_SESSION["login"]) && isset($_SESSION['password'])) {
         $this->controleur_authentification->verifieConnexion($_POST['login'], $_POST['password']);
       }
       else {
