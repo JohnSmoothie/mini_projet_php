@@ -1,7 +1,9 @@
 <?php
 
-  setCookie("login", $_POST['login']);
-  setCookie("password", $_POST['password']);
+  if(isset($_POST["login"]) && isset($_POST["password"])){
+    $_SESSION["login"] = $_POST["login"];
+    $_SESSION["password"] = $_POST["password"];
+  }
 
   require "config/config.php";
   require PATH_CONTROLEUR."/routeur.php";
