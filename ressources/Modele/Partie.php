@@ -16,22 +16,21 @@
       $_SESSION["plateau"] = $this->plateau;
     }
 
-<<<<<<< HEAD
-    /*public function caseJouable($x, $y) {
+
+    public function caseJouable($x, $y) {
       $res = true;
       if($x == 0 || $x == 1 || $x == 5 || $x == 6) {
         if($y == 0 || $y == 1 || $y == 5 || $y == 6) {
           $res = false;
         }
-=======
+
     public function caseJouable($x, $y) {
       $res =  true;
       if($plateau[$x][$y] == -1){
         $res = false;
->>>>>>> b0d04c20ab2d911eba935077f8fb1abb3ab89804
       }
       return $res;
-    }*/
+    }
 
     public function caseVide($x, $y) {
       $res = false;
