@@ -1,18 +1,28 @@
 <?php
 
-require 'controleurAuthentification.php';
+require_once 'Controleur_authentification.php';
 
-class Routeur
-{
-    // Traite une requête entrante
-    public function routerRequete()
-    {
-        if (isset($_POST["login"]) && isset($_POST["pwd"])) {
-            $this->ctrlAuthentification->authentification($_POST['login'], $_POST['pwd']);
-        } else {
-            $this->ctrlAuthentification->accueil();
-        }
-    }
-}
+class Routeur {
+
+  private $controleur_authentification;
+
+  public function __construct() {
+    $this->controleur_authentification = new Controleur_authentification();
+  }
+
+  // Traite une requête entrante
+  public function routerRequete() {
+
+    if (isset($_POST['login']) && isset($_POST['password'])) {
+      $this->controleur_authentification->verifieConnexion($_POST['login'], $_POST['password']);
+     }
+    else {$this->controleur_authentification->accueil();}
+ }
+
+
+ }
+
+
+
 
 ?>
