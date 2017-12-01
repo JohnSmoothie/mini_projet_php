@@ -1,7 +1,10 @@
 <?php
+
+require_once PATH_MODELE.'/Partie.php';
+
   class Jeux {
 
-    function afficherPage() {
+    function afficherPage($plateau) {
       ?>
 
       <html>
@@ -27,15 +30,11 @@
 
             ?>
 
-              <!--  <td><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fpolyjoule.org%2Fadministration%2Fressources%2Fdata%2FParticipants%2F1423167573.jpg&f=1" alt="blanc" height="50" width="50"></td>
-                //<td><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fpolyjoule.org%2Fadministration%2Fressources%2Fdata%2FParticipants%2F1423167573.jpg&f=1" alt="blanc" height="50" width="50"></td>
-              -->
-
           </table>
 
 
 
-            <form method="post" action="index.php">
+            <form method="post" action="../index.php">
               <p>Quel Pion voulez vous déplacer ?</p><br>
               x :
               <input type="number" name="x1" min="0" max="6"/>
