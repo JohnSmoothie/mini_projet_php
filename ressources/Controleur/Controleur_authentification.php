@@ -17,10 +17,19 @@
         $this->vue_authentification->afficherVue();
       }
 
-      public function verifieConnexion($pseudo, $password) {
+      public function verifieConnexion($pseudo, $input) {
         if($this->modele->exists($pseudo)) {
-          $input = $password;
-          require_once PATH_MODELE . '/Modele_crypt.php';
+
+          $toto = crypt('toto');
+          $titi = crypt('titi');
+
+          $password = $this->modele->getPassword($pseudo);
+
+          if (crypt($input, $password) == $password) {
+              echo "Vous êtes identifié !";
+          } else {
+              echo "Mot de passe incorrect !";
+          }
         }
         else {
           $this->vue_authentification->afficherVue();

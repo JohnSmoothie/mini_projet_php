@@ -50,6 +50,26 @@
         }
       }
 
+      public function getPassword($pseudo){
+        try {
+          $statement=$this->connexion->query("SELECT motDePasse from joueur where pseudo = ?;");
+          $statement->bindParam(1, $pseudo);
+
+          $result=$statement->fetch(PDO::FETCH_ASSOC);
+
+          if ($result['motDePasse']!=NUll) {
+            return $result['motDePasse'];
+          }
+          else {
+            return NULL;
+           }
+       }
+       catch(PDOException $e) {
+         $this->deconnexion();
+         throw new TableAccesException("Problème avec la table joueur");
+       }
+      }
+
       public function exists($pseudo) {
         try {
 	         $statement = $this->connexion->prepare("select pseudo from joueurs where pseudo=?;");
