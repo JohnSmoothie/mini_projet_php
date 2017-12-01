@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `joueurs` (
   `pseudo` varchar(20) CHARACTER SET utf8 NOT NULL,
   `motDePasse` varchar(200) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 --
 -- Dumping data for table `joueurs`
