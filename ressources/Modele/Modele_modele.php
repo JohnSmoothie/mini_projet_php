@@ -14,7 +14,7 @@
     class ConnexionException extends MonException {
     }
 
-    class TableAccesException extends MonException{
+    class TableAccesException extends MonException {
     }
 
     class Modele {
@@ -53,12 +53,11 @@
       public function exists($pseudo) {
         try {
 	         $statement = $this->connexion->prepare("select pseudo from pseudonyme where pseudo=?;");
-	         $statement->bindParam(1, $pseudoParam);
-	         $pseudoParam=$pseudo;
+	         $statement->bindParam(1, $pseudo);
 	         $statement->execute();
 	         $result=$statement->fetch(PDO::FETCH_ASSOC);
 
-	         if ($result["pseudo"]!=NUll) {
+	         if ($result['pseudo']!=NUll) {
              return true;
            }
 	         else {
@@ -67,7 +66,6 @@
         }
         catch(PDOException $e) {
           $this->deconnexion();
-          throw new TableAccesException("Problème avec la table pseudonyme");
         }
       }
  }
