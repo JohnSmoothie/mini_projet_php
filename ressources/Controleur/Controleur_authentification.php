@@ -6,10 +6,11 @@
   class Controleur_authentification {
 
     private $vue_authentification;
-    private $modele_authentification;
+    private $modele;
 
       function __construct() {
         $this->vue_authentification = new Vue_authentification();
+        $this->modele = new Modele();
       }
 
       function accueil() {
@@ -17,7 +18,7 @@
       }
 
       function verifieConnexion($pseudo, $password) {
-        if($pseudo == 'test' && $password == 'test') {
+        if($this->modele->exists($pseudo)) {
           echo 'OK';
         }
         else {

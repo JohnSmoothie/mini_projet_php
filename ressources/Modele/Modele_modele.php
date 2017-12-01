@@ -52,13 +52,13 @@
 
       public function exists($pseudo) {
         try {
-	         $statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
+	         $statement = $this->connexion->prepare("select pseudo from pseudonyme where pseudo=?;");
 	         $statement->bindParam(1, $pseudoParam);
 	         $pseudoParam=$pseudo;
 	         $statement->execute();
 	         $result=$statement->fetch(PDO::FETCH_ASSOC);
 
-	         if ($result["id"]!=NUll) {
+	         if ($result["pseudo"]!=NUll) {
              return true;
            }
 	         else {
