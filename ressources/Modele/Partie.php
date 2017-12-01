@@ -15,15 +15,15 @@
       ];
     }
 
-    public function caseJouable($x, $y) {
-      $res =  true;
+    /*public function caseJouable($x, $y) {
+      $res = true;
       if($x == 0 || $x == 1 || $x == 5 || $x == 6) {
         if($y == 0 || $y == 1 || $y == 5 || $y == 6) {
           $res = false;
         }
       }
       return $res;
-    }
+    }*/
 
     public function caseVide($x, $y) {
       $res = false;
@@ -39,9 +39,9 @@
         for($y = 6; $y>=0; $y--) {
           if(caseJouable($x, $y)) {
             if(caseVide($x, $y)) {
-              echo '<td style="background-color:white;" width = "50" height ="50"></td>'
+              echo '<td style="background-color:white;" width = "50" height ="50"></td>';
             } else {
-              echo '<td><img src="../img/cookie.jpeg" width = "50" height ="50"></td>'
+              echo '<td><img src="../img/cookie.jpeg" width = "50" height ="50"></td>';
             }
           } else {
             echo '<td style="background-color:black;" width = "50" height ="50"></td>';
