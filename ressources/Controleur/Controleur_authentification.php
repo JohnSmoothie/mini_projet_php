@@ -8,16 +8,16 @@
     private $vue_authentification;
     private $modele;
 
-      function __construct() {
+      public function __construct() {
         $this->vue_authentification = new Vue_authentification();
         $this->modele = new Modele();
       }
 
-      function accueil() {
+      public function accueil() {
         $this->vue_authentification->afficherVue();
       }
 
-      function verifieConnexion($pseudo, $password) {
+      public function verifieConnexion($pseudo, $password) {
         if($this->modele->exists($pseudo)) {
           echo 'OK';
         }
