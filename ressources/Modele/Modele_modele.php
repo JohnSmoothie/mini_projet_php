@@ -67,7 +67,7 @@
         }
         catch(PDOException $e) {
           $this->deconnexion();
-          throw new TableAccesException("problème avec la table pseudonyme");
+          throw new TableAccesException("Problème avec la table pseudonyme");
         }
       }
  }
