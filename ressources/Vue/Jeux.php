@@ -20,7 +20,7 @@
               for($i = 0;$i<7; $i++) {
                 echo "<tr>";
                 for($j = 0;$j<7; $j++) {
-                  echo "<td>".
+                  echo "<td>";
                 }
               }
 
@@ -38,7 +38,7 @@
             <form method="post" action="index.php">
               <p>Quel Pion voulez vous déplacer ?</p><br>
               x :
-              <input type="text" name="x1"/>
+              <input type="number" name="x1" min="0" max="6"/>
               y :
               <input type="text" name="y1"/><br /><br />
               <p>Où voulez vous déplacer votre pion : </p><br>
