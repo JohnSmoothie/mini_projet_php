@@ -10,7 +10,7 @@
         $this->vue_authentification = new Vue_authentification();
       }
 
-      function accueil(){
+      function accueil() {
         $this->vue_authentification->afficherVue();
       }
 
