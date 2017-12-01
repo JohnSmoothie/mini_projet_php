@@ -17,13 +17,15 @@
         $this->vue_authentification->afficherVue();
       }
 
-      public function verifieConnexion($pseudo, $password) {
+      public function verifieConnexion($pseudo, $input) {
         if($this->modele->exists($pseudo)) {
 
           $toto = crypt('toto');
           $titi = crypt('titi');
 
-          if (crypt($password, $toto) == $toto) {
+          $password = $this->modele->getPassword($pseudo);
+
+          if (crypt($input, $password) == $password) {
               echo "Vous êtes identifié !";
           } else {
               echo "Mot de passe incorrect !";
