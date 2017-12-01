@@ -12,7 +12,7 @@ class Authentification
             <meta charset="utf-8"/>
         </head>
         <body>
-        <form method="post" action="index.php">
+        <form method="post" action="../index.php">
             Login
             <input type="text" name="login"/><br/><br/>
             Mot de passe
