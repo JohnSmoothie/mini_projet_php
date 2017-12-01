@@ -9,9 +9,9 @@
 //C'est pour cette raison que l'on passe $toto comme 2ème paramètre.
 // voir documentation php
 
-  if (crypt('toto', $toto) == $toto) {
-      echo 'Vous êtes identifié !';
+  if (crypt($input, $toto) == $toto) {
+      echo "Vous êtes identifié !";
   } else {
-      echo 'Mot de passe incorrect !';
+      echo "Mot de passe incorrect !";
   }
 ?>

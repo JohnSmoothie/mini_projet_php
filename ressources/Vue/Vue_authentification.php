@@ -3,7 +3,7 @@
 class Vue_authentification
 {
 
-    function afficherVue()
+    public function afficherVue()
     {
         ?>
 

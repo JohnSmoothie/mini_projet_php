@@ -6,19 +6,21 @@
   class Controleur_authentification {
 
     private $vue_authentification;
-    private $modele_authentification;
+    private $modele;
 
-      function __construct() {
+      public function __construct() {
         $this->vue_authentification = new Vue_authentification();
+        $this->modele = new Modele();
       }
 
-      function accueil() {
+      public function accueil() {
         $this->vue_authentification->afficherVue();
       }
 
-      function verifieConnexion($pseudo, $password) {
-        if($pseudo == 'test' && $password == 'test') {
-          echo 'OK';
+      public function verifieConnexion($pseudo, $password) {
+        if($this->modele->exists($pseudo)) {
+          $input = $password;
+          require_once PATH_MODELE . '/Modele_crypt.php';
         }
         else {
           $this->vue_authentification->afficherVue();
