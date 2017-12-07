@@ -44,11 +44,11 @@ class ModelePartie
         for ($x = 6; $x >= 0; $x--) {
             echo "<tr>";
             for ($y = 6; $y >= 0; $y--) {
-                if (caseJouable($x, $y)) {
-                    if (caseVide($x, $y)) {
+                if ($this->caseJouable($x, $y)) {
+                    if ($this->caseVide($x, $y)) {
                         echo '<td style="background-color:white;" width = "50" height ="50"></td>';
                     } else {
-                        echo '<td><img src="../img/cookie.jpeg" width = "50" height ="50"></td>';
+                        echo '<td><img src="../ressources/img/cookie.jpeg" width = "50" height ="50"></td>';
                     }
                 } else {
                     echo '<td style="background-color:black;" width = "50" height ="50"></td>';
