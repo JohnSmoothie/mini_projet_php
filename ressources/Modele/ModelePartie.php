@@ -24,7 +24,7 @@ class ModelePartie
     {
         $res = true;
         if ($this->plateau[$x][$y] == -1) {
-            $res = false;
+            return $res = false;
         }
     }
 
@@ -32,7 +32,7 @@ class ModelePartie
     {
         $res = false;
         if ($this->plateau[$x][$y] == 0) {
-            $res = true;
+            return $res = true;
         }
     }
 
