@@ -5,7 +5,7 @@ require_once PATH_MODELE . '/ModelePartie.php';
 class VueJeu
 {
 
-    public function afficherPage($partie)
+    public function afficherPage(ModelePartie $partie)
     {
         ?>
 
@@ -17,16 +17,11 @@ class VueJeu
         <h1>Jeux de Solitaire</h1>
         <h3>Par Evann BACALA et Victor BOIX</h3>
         <br>
-        <table border="1">
-            <caption> Grille du Jeu</caption>
+        <?php
+        $partie->afficherPlateau();
+        ?>
 
-            <?php
-            $partie->afficherPlateau();
-            ?>
-
-        </table>
-
-
+<?php /*
         <form method="post" action="../index.php">
             <p>Quel Pion voulez vous déplacer ?</p><br>
             x :
@@ -40,13 +35,13 @@ class VueJeu
             <input type="text" name="y2"/><br><br>
             <input type="submit" name="soumettre" value="envoyer"/>
         </form>
-        <br />
-        <br />
-        <br />
-        <a href="<?php session_abort();?>">Déconnexion</a>
+        <br/>
+        <br/>
+        <br/>
+ */ ?>
+        <a href="<?php session_abort(); ?>">Déconnexion</a>
         </body>
         </html>
-
         <?php
     }
 
