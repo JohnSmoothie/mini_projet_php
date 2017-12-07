@@ -24,7 +24,7 @@ class ModelePartie
     {
         $res = true;
         if ($this->plateau[$x][$y] == -1) {
-            return $res = false;
+            $res = false;
         }
     }
 
@@ -56,6 +56,12 @@ class ModelePartie
         }
         echo "</table>";
     }
+
+    public function supprimerPion($x, $y) {
+      $this->plateau[$x][$y] = O;
+    }
+
+    
 }
 
 ?>
