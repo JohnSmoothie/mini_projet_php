@@ -24,16 +24,18 @@ class ModelePartie
     {
         $res = true;
         if ($this->plateau[$x][$y] == -1) {
-            return $res = false;
+            $res = false;
         }
+        return $res;
     }
 
     public function caseVide($x, $y)
     {
         $res = false;
         if ($this->plateau[$x][$y] == 0) {
-            return $res = true;
+            $res = true;
         }
+        return $res;
     }
 
     public function afficherPlateau()
