@@ -23,10 +23,8 @@ class ModelePartie
     public function caseJouable($x, $y)
     {
         $res = true;
-        if ($x == 0 || $x == 1 || $x == 5 || $x == 6) {
-            if ($y == 0 || $y == 1 || $y == 5 || $y == 6) {
-                $res = false;
-            }
+        if ($this->plateau[$x][$y] == -1) {
+            $res = false;
         }
     }
 
