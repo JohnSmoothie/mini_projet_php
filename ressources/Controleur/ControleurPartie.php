@@ -1,6 +1,7 @@
 <?php
 
 require_once PATH_VUE . "VueJeu.php";
+require_once PATH_MODELE . "ModelePartie.php";
 
 class ControleurPartie
 {
@@ -15,7 +16,10 @@ class ControleurPartie
 
     public function afficherVueJeu()
     {
-        $this->vue_jeu->afficherVue($this->partie);
+      if($_SESSION['nbClic'] == 2) {
+        $this->partie->jouerCoup($_SESSION['depart_x'], $_SESSION['depart_y'], $_SESSION['arrivee_x'], $_SESSION['arrivee_y']);
+      }
+      $this->vue_jeu->afficherVue($this->partie);
     }
 }
 
