@@ -43,7 +43,7 @@ class Partie
             0 => array(0 => -1, 1 => -1, 2 => new Pion(0, 2), 3 => new Pion(0, 3), 4 => new Pion(0, 5), 5 => -1, 6 => -1),
             1 => array(0 => -1, 1 => -1, 2 => new Pion(1, 2), 3 => new Pion(1, 3), 4 => new Pion(1, 5), 5 => -1, 6 => -1),
             2 => array(0 => new Pion(2, 0), 1 => new Pion(2, 1), 2 => new Pion(2, 2), 3 => new Pion(2, 3), 4 => new Pion(2, 4), 5 => new Pion(2, 5), 6 => new Pion(2, 6)),
-            3 => array(0 => new Pion(3, 0), 1 => new Pion(3, 1), 2 => new Pion(3, 2), 3 => null, 4 => new Pion(3,4), 5 => new Pion(3, 5), 6 => new Pion(3, 6)),
+            3 => array(0 => new Pion(3, 0), 1 => new Pion(3, 1), 2 => new Pion(3, 2), 3 => null, 4 => new Pion(3, 4), 5 => new Pion(3, 5), 6 => new Pion(3, 6)),
             4 => array(0 => new Pion(4, 0), 1 => new Pion(4, 1), 2 => new Pion(4, 2), 3 => new Pion(4, 3), 4 => new Pion(4, 4), 5 => new Pion(4, 5), 6 => new Pion(4, 6)),
             5 => array(0 => -1, 1 => -1, 2 => new Pion(5, 2), 3 => new Pion(5, 3), 4 => new Pion(5, 5), 5 => -1, 6 => -1),
             6 => array(0 => -1, 1 => -1, 2 => new Pion(6, 2), 3 => new Pion(6, 3), 4 => new Pion(6, 5), 5 => -1, 6 => -1),
@@ -67,10 +67,14 @@ class Partie
         if ($this->caseJouable($arrivee_x, $arrivee_y) == false) return false;
         if ($this->getVal($depart_x, $depart_y) == null) return false;
         if ($this->getVal($arrivee_x, $arrivee_y) != null) return false;
+        if (!(($arrivee_x - $depart_x == 2 || $arrivee_x - $depart_x == -2) && $arrivee_y - $depart_y == 0) || (($arrivee_y - $depart_y == 2 || $arrivee_y - $depart_y == -2) && $arrivee_x - $depart_x == 0)) {
+            if($this->getVal(($arrivee_x + $depart_x) / 2, ($arrivee_y + $depart_y) / 2) == null) return false;
+        }
         return true;
     }
 
-    public function jouerCoup($depart_x, $depart_y, $arrivee_x, $arrivee_y)
+    public
+    function jouerCoup($depart_x, $depart_y, $arrivee_x, $arrivee_y)
     {
         if ($this->mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)) {
             $this->plateau[$arrivee_x][$arrivee_y] = $this->plateau[$depart_x][$depart_y];
@@ -78,7 +82,9 @@ class Partie
         }
     }
 
-    public function getPlateau() {
+    public
+    function getPlateau()
+    {
         return $this->plateau;
     }
 }
