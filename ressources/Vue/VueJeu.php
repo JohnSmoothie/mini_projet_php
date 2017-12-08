@@ -23,14 +23,16 @@ class VueJeu
                     if (is_int($partie->getVal($x, $y))) {
                         echo '<td width="50" height="50" bgcolor="black"></td>';
                     } elseif (is_null($partie->getVal($x, $y))) {
-                        echo '<td width="50" height="50" bgcolor="white"></td>';
-                    } else {
                         echo '<td>';
-                        echo '<a href="index.php?depart_x=' . $x . '&depart_y=' . $y . '"><img src="img/cookie.jpeg" width="50" height="50" /></a>';
+                        echo '<a href = "index.php?arrivee_x=' . $x . '&arrivee_y=' . $y . '" ><img src="img/white.jpeg" width="50" height="50" /></a >';
                         echo '</td>';
+                    } else {
+                        echo '<td > ';
+                        echo '<a href = "index.php?depart_x=' . $x . '&depart_y=' . $y . '" ><img src = "img/cookie.jpeg" width = "50" height = "50" /></a > ';
+                        echo '</td > ';
                     }
                 }
-                echo '</tr>';
+                echo '</tr > ';
             }
             ?>
         </table>
