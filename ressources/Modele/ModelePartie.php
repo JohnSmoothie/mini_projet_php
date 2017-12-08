@@ -61,12 +61,22 @@ class Partie
         return ($this->getVal($x, $y) != -1);
     }
 
+    public function deplacementValide($xd, $yd, $xa, $yd) {
+        $res = false;
+        if((($xa-$xd == 2 || $xa-$xd == -2) && $ya-$yd == 0) || (($ya-$yd == 2 || $ya-$yd == -2) && $xa-$xd == 0)) {
+            if($this->plateau[$xd][$yd] == 1 && $this->plateau[$xa][$ya] == 0) {
+                //ajouter la condition qu'il y est un pion entre l'arrivé et le départ
+            }
+        }
+    }
+
     public function mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)
     {
         if ($this->caseJouable($depart_x, $depart_y) == false) return false;
         if ($this->caseJouable($arrivee_x, $arrivee_y) == false) return false;
         if ($this->getVal($depart_x, $depart_y) == null) return false;
         if ($this->getVal($arrivee_x, $arrivee_y) != null) return false;
+        if (!(($arrivee_x-$depart_x == 2 || $arrivee_x-$depart_x == -2) && $arrivee_y-$depart_y == 0) || (($arrivee_y-$depart_y == 2 || $arrivee_y-$depart_y == -2) && $arrivee_x - $depart_x == 0)) return false;
         return true;
     }
 
