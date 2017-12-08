@@ -1,7 +1,6 @@
 <?php
 
 require_once PATH_VUE . "/VueAuthentification.php";
-require_once PATH_MODELE . '/ModeleBase.php';
 
 class ControleurAuthentification
 {

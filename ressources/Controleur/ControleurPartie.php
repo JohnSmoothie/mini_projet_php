@@ -1,7 +1,6 @@
 <?php
 
-require_once PATH_VUE . "/VueJeu.php";
-require_once PATH_MODELE . '/ModelePartie.php';
+require_once PATH_VUE . "VueJeu.php";
 
 class ControleurPartie
 {
@@ -11,12 +10,12 @@ class ControleurPartie
     public function __construct()
     {
         $this->vue_jeu = new VueJeu();
-        $this->partie = new ModelePartie();
+        $this->partie = new Partie();
     }
 
-    public function jeu()
+    public function afficherVueJeu()
     {
-        $this->vue_jeu->afficherPage($this->partie);
+        $this->vue_jeu->afficherVue($this->partie);
     }
 }
 
