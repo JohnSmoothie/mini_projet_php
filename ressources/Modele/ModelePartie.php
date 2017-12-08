@@ -79,6 +79,9 @@ class Partie
         if ($this->mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)) {
             $this->plateau[$arrivee_x][$arrivee_y] = $this->plateau[$depart_x][$depart_y];
             $this->plateau[$depart_x][$depart_y] = null;
+            return true;
+        } else {
+          return false;
         }
     }
 
@@ -160,7 +163,7 @@ class Partie
     public function deplacerPion($xd, $yd, $xa, $yd) {
       if(deplacementValide()) {
         supprimerPion($xd, $ya);
-        
+
       }
     }
 }

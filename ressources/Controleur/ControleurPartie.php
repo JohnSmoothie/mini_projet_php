@@ -1,6 +1,7 @@
 <?php
 
 require_once PATH_VUE . "VueJeu.php";
+require_once PATH_VUE . "VueErreurMouvement.php";
 require_once PATH_MODELE . "ModelePartie.php";
 
 class ControleurPartie
@@ -11,13 +12,23 @@ class ControleurPartie
     public function __construct()
     {
         $this->vue_jeu = new VueJeu();
+        $this->vue_mouvementInvalide = new VueMouvementInvalide();
         $this->partie = new Partie();
     }
 
     public function afficherVueJeu()
     {
       if($_SESSION['nbClic'] == 2) {
-        $this->partie->jouerCoup($_SESSION['depart_x'], $_SESSION['depart_y'], $_SESSION['arrivee_x'], $_SESSION['arrivee_y']);
+        if(!$this->partie->jouerCoup($_SESSION['depart_x'], $_SESSION['depart_y'], $_SESSION['arrivee_x'], $_SESSION['arrivee_y'])) {
+          $_SESSION['nbClic'] = 0;
+          $this->vue_mouvementInvalide->afficherVue();
+        } else {
+          $_SESSION['nbClic'] = 0;
+          $_SESSION['depart_x'] = null;
+          $_SESSION['depart_y'] = null;
+          $_SESSION['arrivee_x'] = null;
+          $_SESSION['arrivee_y'] = null;
+        }
       }
       $this->vue_jeu->afficherVue($this->partie);
     }
