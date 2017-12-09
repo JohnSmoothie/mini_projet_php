@@ -36,6 +36,7 @@ class Partie
 {
     private $plateau;
     private $victoire;
+    private $nbPion;
 
     public function __construct()
     {
@@ -49,6 +50,7 @@ class Partie
             6 => array(0 => -1, 1 => -1, 2 => new Pion(6, 2), 3 => new Pion(6, 3), 4 => new Pion(6, 5), 5 => -1, 6 => -1),
         );
         $this->victoire = false;
+        $this->nbPion = 32;
     }
 
     public function getVal($x, $y)
@@ -78,11 +80,39 @@ class Partie
     {
         if ($this->mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)) {
             $this->plateau[$arrivee_x][$arrivee_y] = $this->plateau[$depart_x][$depart_y];
-            $this->plateau[$depart_x][$depart_y] = null;
+            $this->supprimerPion($depart_x, $depart_y);
             return true;
         } else {
           return false;
         }
+    }
+
+    public function supprimerPion($x, $y) {
+      $this->plateau[$x][$y] = null;
+      $this->nbPion--;
+    }
+
+    public function verifFin() { //retourne 0 si la partie n'est pas fini, -1 si elle est pedu, 1 si elle est gagné
+      if(verifVictoire()) {
+        return 1;
+      } else if(verifDefaite()) {
+        return -1;
+      } else {
+        return 0;
+      }
+      }
+    }
+
+    public function verifVictoire() {
+      if($this->nbPion == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function verifDefaite() {
+      //Toux Doux
     }
 
     public

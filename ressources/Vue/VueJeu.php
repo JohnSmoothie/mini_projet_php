@@ -36,6 +36,8 @@ class VueJeu
             }
             ?>
         </table>
+        <br>
+        <p>Cliquez sur le pion que vous voulez déplacer puis sur la case de destination</p>
         </body>
         </html>
         <?php
