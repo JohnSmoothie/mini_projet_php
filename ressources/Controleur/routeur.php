@@ -17,6 +17,11 @@ class Routeur
     public function routerRequete()
     {
         if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
+          if(isset($_GET['reinitPartie'])) {
+            if($_GET['reinitPartie'] == 1) {
+              $this->controleur_partie = new ControleurPartie();
+            }
+          }
           if(isset($_GET['depart_x']) && isset($_GET['depart_y'])) {
             $_SESSION['depart_x'] = $_GET['depart_x'];
             $_SESSION['depart_y'] = $_GET['depart_y'];

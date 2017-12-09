@@ -95,6 +95,8 @@ class ModeleBase
             throw new TableAccesException("Problème avec la table joueur");
         }
     }
+
+
 }
 
 ?>

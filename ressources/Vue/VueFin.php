@@ -22,7 +22,11 @@ class VueFin
           }
          ?>
 
-         
+         <!--Toux Doux : afficher les trois meilleurs joueurs avec leurs stat-->
+
+         <br>
+         <a href="index.php?reinitPartie=1">Nouvel partie</a>
+
         </body>
         </html>
         <?php

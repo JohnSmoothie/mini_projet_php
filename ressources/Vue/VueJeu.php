@@ -38,6 +38,9 @@ class VueJeu
         </table>
         <br>
         <p>Cliquez sur le pion que vous voulez déplacer puis sur la case de destination</p>
+        <br><br>
+        <!--a tester car pas sur de ce que ca fait-->
+        <a href="index.php?reinitPartie=1">Réinitialiser la partie</a>
         </body>
         </html>
         <?php
