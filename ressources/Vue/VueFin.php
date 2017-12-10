@@ -28,7 +28,9 @@ class VueFin
         $cmp = 0;
           foreach ($tableau as $row) {
               $cmp++;
-              if ($cmp <= 3) echo $cmp . ' - ' . $row->pseudo . ' a gagné ' . $row->nbVictoires;
+              if ($cmp <= 3) {
+                  echo $cmp . ' - ' . $row->pseudo . ' a gagné ' . $row->nbVictoires;
+              }
           }
         ?>
 

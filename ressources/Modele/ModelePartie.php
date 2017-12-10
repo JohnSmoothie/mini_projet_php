@@ -19,99 +19,42 @@ class Partie
         $this->victoire = false;
         $this->nbPion = 32;
     }
-    //retourne la position du plateau aux coordonnées $x et $y
+
+    // Retourne la position du plateau aux coordonnées $x et $y
     public function getPion($x, $y)
     {
         return @$this->plateau[$x][$y];
     }
-    //la position du plateau aux coordonnées $x et $y prend pour valeur $valeur
-    public function setPion($x, $y, $valeur) {
+
+    // La position du plateau aux coordonnées $x et $y prend pour valeur $valeur
+    public function setPion($x, $y, $valeur)
+    {
         $this->plateau[$x][$y] = $valeur;
     }
-    //retourn le plateau
-    public function getPlateau() {
+
+    // Retourne le plateau
+    public function getPlateau()
+    {
         return $this->plateau;
     }
-    //retourne le nombre de pion
+
+    // Retourne le nombre de pions
     public function getNbPion()
     {
         return $this->nbPion;
     }
-    //met à jour le nombre de pion
+
+    // Met à jour le nombre de pions
     public function setNbPion($nbPion)
     {
         $this->nbPion = $nbPion;
     }
-    //décremente le nombre de pions
-    public function decrementerNbPion() {
+
+    // Décremente le nombre de pions
+    public function decrementerNbPion()
+    {
         $this->nbPion--;
     }
-
-/*
-    public function caseJouable($x, $y)
-    {
-        return ($this->getValeur($x, $y) == 0);
-    }
-
-    public function pionPresent($x, $y) {
-        return ($this->getValeur($x, $y) == 1);
-    }
-
-    public function mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)
-    {
-        if (!$this->pionPresent($depart_x, $depart_y)) return false;
-        if ($this->pionPresent($arrivee_x, $arrivee_y)) return false;
-        if (!(($arrivee_x - $depart_x == 2 || $arrivee_x - $depart_x == -2) && $arrivee_y - $depart_y == 0) || (($arrivee_y - $depart_y == 2 || $arrivee_y - $depart_y == -2) && $arrivee_x - $depart_x == 0)) {
-            if ($this->getValeur(($arrivee_x + $depart_x) / 2, ($arrivee_y + $depart_y) / 2) == 0) return false;
-        }
-        return true;
-    }
-
-    public function jouerCoup($depart_x, $depart_y, $arrivee_x, $arrivee_y)
-    {
-        if ($this->mouvementValide($depart_x, $depart_y, $arrivee_x, $arrivee_y)) {
-            $this->plateau[$arrivee_x][$arrivee_y] = $this->plateau[$depart_x][$depart_y];
-            $this->supprimerPion(($arrivee_x + $depart_x) / 2, ($arrivee_y + $depart_y) / 2);
-            $this->supprimerPion($depart_x, $depart_y);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function supprimerPion($x, $y)
-    {
-        $this->plateau[$x][$y] = 0;
-        $this->nbPion--;
-    }
-
-    public function verifFin()
-    { //retourne 0 si la partie n'est pas finie, -1 si elle est perdu, 1 si elle est gagnée
-        if ($this->verifVictoire()) {
-            return 1;
-        } else if ($this->verifDefaite()) {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-
-
-    public function verifVictoire()
-    {
-        if ($this->nbPion == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function verifDefaite()
-    {
-        return false;
-
-    }
-*/
 }
 
 ?>

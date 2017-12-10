@@ -44,11 +44,10 @@ class ModeleBase
         $this->connexion = null;
     }
 
-    //retourne tous les pseudos préents dans la table joueurs
     public function getPseudos()
     {
         try {
-            $statement = $this->connexion->query("SELECT pseudo from joueurs;");
+            $statement = $this->connexion->query("SELECT pseudo FROM joueurs;");
 
             while ($ligne = $statement->fetch()) {
                 $result[] = $ligne['pseudo'];
@@ -59,11 +58,10 @@ class ModeleBase
         }
     }
 
-    //retourne le mot de passe lié à un pseudo, si le pseudo n'existe pas il est renvoyé null
     public function getPassword($pseudo)
     {
         try {
-            $statement = $this->connexion->prepare("SELECT motDePasse from joueurs where pseudo = ?");
+            $statement = $this->connexion->prepare("SELECT motDePasse FROM joueurs WHERE pseudo = ?");
             $statement->bindParam(1, $pseudo);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
@@ -79,11 +77,10 @@ class ModeleBase
         }
     }
 
-    //vérifie qu'un pseudo existe renvoie true si il existe false sinon
     public function exists($pseudo)
     {
         try {
-            $statement = $this->connexion->prepare("select pseudo from joueurs where pseudo=?;");
+            $statement = $this->connexion->prepare("SELECT pseudo FROM joueurs WHERE pseudo=?;");
             $statement->bindParam(1, $pseudo);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
@@ -99,10 +96,10 @@ class ModeleBase
         }
     }
 
-    //ajoute une partie dans la table parties où $pseudo est le pseudo du joueur et $fin le résultat de la partie (1 si gagné 0 si perdu)
-    public function ajoutPartie($pseudo, $fin) {
+    public function ajoutPartie($pseudo, $fin)
+    {
         try {
-            $statement = $this->connexion->prepare("insert into parties ('pseudo', 'partieGagnee') values (?, ?)");
+            $statement = $this->connexion->prepare("INSERT INTO parties ('pseudo', 'partieGagnee') VALUES (?, ?)");
             $statement->bindParam(1, $pseudo);
             $statement->bindParam(2, $fin);
             $statement->execute();
@@ -113,20 +110,17 @@ class ModeleBase
         }
     }
 
-    //revoie un tableau ordonné des joueurs avec leurs nombre de parties gagnées
-    public function getMeilleursJoueur() {
-      try {
-        $statement = $this->connexion->query("select pseudo from partie ordered by select count(*) from (select pseudo=? from partie where partieGagnee=true);");
-        while ($ligne = $statement->fetch()) {
-            $result[] = $ligne['pseudo'];
+    public function getMeilleursJoueurs()
+    {
+        try {
+            $statement = $this->connexion->query("SELECT pseudo, count(*) AS nbVictoires FROM parties WHERE partieGagnee = 1 GROUP BY pseudo ORDER BY nbVictoires DESC");
+            $result = $statement->fetch(PDOStatement::fetchAll);
+            return $result;
 
+        } catch (PDOException $e) {
+            $this->deconnexion();
+            throw new TableAccesException("Problème avec la table parties");
         }
-        //Toux DOUx : associer les stats à chaques joueurs
-        return ($result);
-      } catch (PDOException $e) {
-          $this->deconnexion();
-          throw new TableAccesException("Problème avec la table joueur");
-      }
     }
 
 
