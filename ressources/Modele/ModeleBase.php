@@ -97,6 +97,22 @@ class ModeleBase
     }
 
 
+    public function getMeilleursJoueur() {
+      try {
+        $statement = $this->connexion->query("select pseudo from partie ordered by select count(*) from (select pseudo=? from partie where partieGagnee=true);");
+        while ($ligne = $statement->fetch()) {
+            $result[] = $ligne['pseudo'];
+
+        }
+        //Toux DOUx : associer les stats à chaques joueurs
+        return ($result);
+      } catch (PDOException $e) {
+          $this->deconnexion();
+          throw new TableAccesException("Problème avec la table joueur");
+      }
+    }
+
+
 }
 
 ?>
