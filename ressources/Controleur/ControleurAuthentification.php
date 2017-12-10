@@ -18,6 +18,7 @@ class ControleurAuthentification
         $this->vue_authentification->afficherVue();
     }
 
+    //verifie que l'authentification est correcte, retourne true si l'authentification est correcte et false sinon
     public function verifieConnexion($pseudo, $input)
     {
         try {

@@ -19,30 +19,30 @@ class Partie
         $this->victoire = false;
         $this->nbPion = 32;
     }
-
+    //retourne la position du plateau aux coordonnées $x et $y
     public function getPion($x, $y)
     {
         return @$this->plateau[$x][$y];
     }
-
+    //la position du plateau aux coordonnées $x et $y prend pour valeur $valeur
     public function setPion($x, $y, $valeur) {
         $this->plateau[$x][$y] = $valeur;
     }
-
+    //retourn le plateau
     public function getPlateau() {
         return $this->plateau;
     }
-
+    //retourne le nombre de pion
     public function getNbPion()
     {
         return $this->nbPion;
     }
-
+    //met à jour le nombre de pion
     public function setNbPion($nbPion)
     {
         $this->nbPion = $nbPion;
     }
-
+    //décremente le nombre de pions
     public function decrementerNbPion() {
         $this->nbPion--;
     }
