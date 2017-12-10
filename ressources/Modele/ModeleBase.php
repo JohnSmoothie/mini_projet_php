@@ -96,6 +96,18 @@ class ModeleBase
         }
     }
 
+    public function ajoutPartie($pseudo, $fin) {
+        try {
+            $statement = $this->connexion->prepare("insert into parties ('pseudo', 'partieGagnee') values (?, ?)");
+            $statement->bindParam(1, $pseudo);
+            $statement->bindParam(2, $fin);
+            $statement->execute();
+
+        } catch (PDOException $e) {
+            $this->deconnexion();
+            throw new TableAccesException("Problème avec la table partie");
+        }
+    }
 
     public function getMeilleursJoueur() {
       try {
