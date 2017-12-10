@@ -2,7 +2,8 @@
 
 class VueFin
 {
-    public function afficherVue($fin)
+    //tab1 correspond au tableau des meilleurs joueurs
+    public function afficherVue($fin, $tab1)
     {
         ?>
 
@@ -22,7 +23,17 @@ class VueFin
         }
         ?>
 
-        <!--Tout Doux : afficher les trois meilleurs joueurs avec leurs stat-->
+        <br>
+        <p>Les meilleurs joueurs</p>
+        <?php
+        $cmp = 0
+          foreach ($tab1 as $row) {
+            $cmp++;
+            if($cmp<=3) {
+              echo $cmp." - ".$row->pseudo." a gagné ".$row->//Toux DOUX." fois";
+            }
+          }
+        ?>
 
         <br>
         <?php
