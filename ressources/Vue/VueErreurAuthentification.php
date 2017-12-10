@@ -2,11 +2,6 @@
 
 class VueErreurAuthentification
 {
-    public function __construct()
-    {
-        $this->afficherVue();
-    }
-
     public function afficherVue()
     {
         ?>

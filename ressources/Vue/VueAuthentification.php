@@ -12,7 +12,7 @@ class VueAuthentification
         </head>
         <body>
         <table>
-            <form method="post" action="../ressources/index.php">
+            <form method="post" action="index.php">
                 <tr>
                     <td>Login</td>
                     <td><input type="text" name="login" required="required"/></td>

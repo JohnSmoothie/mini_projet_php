@@ -15,18 +15,21 @@ class VueFin
         <h3>Par Evann BACALA et Victor BOIX</h3>
         <br>
         <?php
-          if($fin == -1) {
+        if ($fin == -1) {
             echo "<h2>Vous avez Perdu</h2>";
-          } else if($fin == 1) {
+        } else if ($fin == 1) {
             echo "<h2>Vous avez Gagné</h2>";
-          }
-         ?>
+        }
+        ?>
 
-         <!--Toux Doux : afficher les trois meilleurs joueurs avec leurs stat-->
+        <!--Tout Doux : afficher les trois meilleurs joueurs avec leurs stat-->
 
-         <br>
-         <a href="index.php?reinitPartie=1">Nouvel partie</a>
-
+        <br>
+        <?php
+        echo '<a href=';
+        $_SESSION['reinitialiser'] = 1;
+        echo 'index.php >Nouvelle Partie</a>';
+        ?>
         </body>
         </html>
         <?php
