@@ -44,6 +44,7 @@ class ModeleBase
         $this->connexion = null;
     }
 
+    //retourne tous les pseudos préents dans la table joueurs
     public function getPseudos()
     {
         try {
@@ -58,6 +59,7 @@ class ModeleBase
         }
     }
 
+    //retourne le mot de passe lié à un pseudo, si le pseudo n'existe pas il est renvoyé null
     public function getPassword($pseudo)
     {
         try {
@@ -77,6 +79,7 @@ class ModeleBase
         }
     }
 
+    //vérifie qu'un pseudo existe renvoie true si il existe false sinon
     public function exists($pseudo)
     {
         try {
@@ -96,6 +99,7 @@ class ModeleBase
         }
     }
 
+    //ajoute une partie dans la table parties où $pseudo est le pseudo du joueur et $fin le résultat de la partie (1 si gagné 0 si perdu)
     public function ajoutPartie($pseudo, $fin) {
         try {
             $statement = $this->connexion->prepare("insert into parties ('pseudo', 'partieGagnee') values (?, ?)");
@@ -109,6 +113,7 @@ class ModeleBase
         }
     }
 
+    //revoie un tableau ordonné des joueurs avec leurs nombre de parties gagnées
     public function getMeilleursJoueur() {
       try {
         $statement = $this->connexion->query("select pseudo from partie ordered by select count(*) from (select pseudo=? from partie where partieGagnee=true);");
