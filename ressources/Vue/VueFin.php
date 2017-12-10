@@ -2,8 +2,7 @@
 
 class VueFin
 {
-    //tab1 correspond au tableau des meilleurs joueurs
-    public function afficherVue($fin, $tab1)
+    public function afficherVue($fin, $tableau)
     {
         ?>
 
@@ -24,23 +23,17 @@ class VueFin
         ?>
 
         <br>
-        <p>Les meilleurs joueurs</p>
+        <p>Les meilleurs joueurs : </p>
         <?php
-        $cmp = 0
-          foreach ($tab1 as $row) {
-            $cmp++;
-            if($cmp<=3) {
-              echo $cmp." - ".$row->pseudo." a gagné ".$row->//Toux DOUX." fois";
-            }
+        $cmp = 0;
+          foreach ($tableau as $row) {
+              $cmp++;
+              if ($cmp <= 3) echo $cmp . ' - ' . $row->pseudo . ' a gagné ' . $row->nbVictoires;
           }
         ?>
 
         <br>
-        <?php
-        echo '<a href=';
-        $_SESSION['reinitialiser'] = 1;
-        echo 'index.php >Nouvelle Partie</a>';
-        ?>
+        <a href="<?php echo 'Modele/ModeleReinitialisation.php' ?>">Nouvelle partie</a>
         </body>
         </html>
         <?php
