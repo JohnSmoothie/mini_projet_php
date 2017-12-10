@@ -19,4 +19,5 @@ define("HOST", "192.168.0.103");
 define("BD", "mini_projet_php");
 define("LOGIN", "ebacala");
 define("PASSWORD", "ebacala");
+
 ?>

@@ -13,7 +13,7 @@ class ControleurAuthentification
         $this->modele = new ModeleBase();
     }
 
-    public function afficherVueAuthentification()
+    public function afficherVue()
     {
         $this->vue_authentification->afficherVue();
     }
