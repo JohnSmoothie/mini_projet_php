@@ -16,7 +16,6 @@ class Routeur
 
     public function __construct()
     {
-        $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
         $this->controleur_authentification = new ControleurAuthentification();
         if (isset($_SESSION['partie'])) $this->controleur_partie = new ControleurPartie($_SESSION['partie']);
         else $this->controleur_partie = new ControleurPartie(new Partie());
@@ -28,26 +27,32 @@ class Routeur
         if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
             // Si une demande de réinitialisation de partie a été faite
             // on réinitialise le controleur et les variables de session de position et de réinitialisation
-            if ($_SESSION['reinitialiser'] == 1) {
+            if (isset($_POST['reinitialiser'])) {
                 $this->controleur_partie->nouvellePartie();
-                $_SESSION['reinitialiser'] = $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
-            }
-            // Sinon (jeu normal)
+                $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
+                $this->controleur_partie->afficherVue();
+            } // Sinon (jeu normal)
             else {
                 // On vérifie que l'utilisateur n'a pas cliqué sur une case blanche en premier
                 // Si oui, une vue d'erreur est affichée et on réinitialise les variables de session de position
-                if (empty($_SESSION['depart_x']) && empty($_SESSION['depart_y']) && !empty($_SESSION['arrivee_x']) && !empty($_SESSION['arrivee_y'])) {
+                if (empty($_SESSION['depart_x']) && empty($_SESSION['depart_y']) && isset($_POST['arrivee_x']) && isset($_POST['arrivee_y'])) {
+                    $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
                     $this->vue_selection_blanc_premier = new VueSelectionBlancPremier();
                     $this->vue_selection_blanc_premier->afficherVue();
-                    $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
-                }
-                // Sinon on effectue le coup
-                else {
+                } // Sinon si seules les coordonées de départ sont définies
+                elseif (isset($_POST['depart_x']) && isset($_POST['depart_y']) && empty($_SESSION['arrivee_x']) && empty($_SESSION['arrivee_y'])) {
+                    $_SESSION['depart_x'] = $_POST['depart_x'];
+                    $_SESSION['depart_y'] = $_POST['depart_y'];
+                    $this->controleur_partie->afficherVue();
+                } // Sinon si les coordonnées de départ et d'arrivée sont définies
+                elseif (isset($_SESSION['depart_x']) && isset($_SESSION['depart_y']) && isset($_POST['arrivee_x']) && isset($_POST['arrivee_y'])) {
+                    $_SESSION['arrivee_x'] = $_POST['arrivee_x'];
+                    $_SESSION['arrivee_y'] = $_POST['arrivee_y'];
                     $this->controleur_partie->jouer();
+                    $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
+                    $this->controleur_partie->afficherVue();
                 }
             }
-            // On affiche le plateau à la fin
-            $this->controleur_partie->afficherVue();
         } // Si la session n'est pas authentifiée
         else {
             // On vérifie la connexion
