@@ -12,6 +12,7 @@ class Routeur
     private $controleur_authentification;
     private $controleur_partie;
     private $vue_selection_blanc_premier;
+    private $vue_erreur_mouvement;
     private $vue_erreur_authentification;
 
     public function __construct()
@@ -26,7 +27,7 @@ class Routeur
         // Si la session a été authentifiée
         if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
             // Si une demande de réinitialisation de partie a été faite
-            // on réinitialise le controleur et les variables de session de position et de réinitialisation
+            // On réinitialise le controleur et les variables de session de position et de réinitialisation
             if (isset($_POST['reinitialiser'])) {
                 $this->controleur_partie->nouvellePartie();
                 $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
@@ -48,8 +49,18 @@ class Routeur
                 elseif (isset($_SESSION['depart_x']) && isset($_SESSION['depart_y']) && isset($_POST['arrivee_x']) && isset($_POST['arrivee_y'])) {
                     $_SESSION['arrivee_x'] = $_POST['arrivee_x'];
                     $_SESSION['arrivee_y'] = $_POST['arrivee_y'];
-                    $this->controleur_partie->jouer();
-                    $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
+                    // Si le mouvement est invalide
+                    // On affiche une vue d'erreur
+                    if(!$this->controleur_partie->jouer()) {
+                        $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
+                        $this->vue_erreur_mouvement = new VueMouvementInvalide();
+                        $this->vue_erreur_mouvement->afficherVue();
+                    } else {
+                        $_SESSION['depart_x'] = $_SESSION['depart_y'] = $_SESSION['arrivee_x'] = $_SESSION['arrivee_y'] = null;
+                        $this->controleur_partie->afficherVue();
+                    }
+                }
+                else {
                     $this->controleur_partie->afficherVue();
                 }
             }
